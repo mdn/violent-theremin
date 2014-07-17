@@ -53,9 +53,19 @@ function updatePage(e) {
 
 // mute button
 
-var mute = document.querySelector('.mute');
+var mute = document.getElementById('mute');
 
 mute.onclick = function() {
+  if(mute.getAttribute('data-muted') === 'false') {
+    gainNode.disconnect(audioCtx.destination);
+    mute.setAttribute('data-muted', 'true');
+    mute.innerHTML = "Unmute";
+  } else {
+    gainNode.connect(audioCtx.destination);
+    mute.setAttribute('data-muted', 'false');
+    mute.innerHTML = "Mute";
+  };
+/*
   if(mute.id == "") {
     gainNode.disconnect(audioCtx.destination);
     mute.id = "activated";
@@ -64,7 +74,7 @@ mute.onclick = function() {
     gainNode.connect(audioCtx.destination);
     mute.id = "";    
     mute.innerHTML = "Mute";
-  }
+  }*/
 }
 
 
@@ -76,7 +86,7 @@ function random(number1,number2) {
   return randomNo;
 } 
 
-var canvas = document.querySelector('.canvas');
+var canvas = document.getElementById('canvas');
 canvas.width = WIDTH;
 canvas.height = HEIGHT; 
 
@@ -105,7 +115,7 @@ function canvasDraw() {
 
 // clear screen
 
-var clear = document.querySelector('.clear');
+var clear = document.getElementById('clear');
 
 clear.onclick = function() {
   canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
