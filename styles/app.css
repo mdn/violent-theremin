@@ -62,12 +62,12 @@ button:active {
   color: white;
 }
 
-.mute {
+#mute {
   top: 41px;
   left: 5px;
 }
 
-.clear {
+#clear {
   top: 6px;
   left: 5px;
 }
